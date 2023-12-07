@@ -1,0 +1,71 @@
+[project]
+name = "gw1774"
+version = "2.0.0"
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "linux-aarch64", "osx-64", "osx-arm64"]
+
+[system-requirements]
+linux = "4.4.0"
+
+[tasks]
+update-flopy = "pip install https://github.com/modflowpy/flopy/zipball/develop"
+install-modflow6 = "get-modflow :python && get-modflow --repo modflow6-nightly-build :python"
+test-modflow6 = "mf6 -v"
+test-installation = "cd installation && python test_installation.py"
+install = { depends_on = [
+  "install-modflow6",
+  "test-modflow6",
+  "test-installation",
+] }
+jupyter = "jupyter lab"
+
+
+[dependencies]
+# required
+python = "<=3.11"
+numpy = ">=1.15.0"
+matplotlib = ">=1.4.0"
+jupyterlab = "*"
+pip = "*"
+git = "*"
+
+# flopy
+python-dateutil = ">=2.4.0"
+affine = "*"
+scipy = "*"
+pandas = "*"
+openpyxl = "*"
+xlrd = "*"
+pyshp = "*"
+rasterio = "*"
+fiona = "*"
+descartes = "*"
+pyproj = "*"
+shapely = ">=1.8"
+geos = "*"
+geojson = "*"
+geopandas = "*"
+vtk = "*"
+rasterstats = "*"
+pyvista = "*"
+imageio = "*"
+xarray = "*"
+xugrid = "*"
+flopy = "*"
+xmipy = "*"
+modflowapi = "*"
+dataretrieval = "*"
+requests = "*"
+pynhd = "*"
+pydaymet = "*"
+utm = "*"
+netcdf4 = "*"
+rtree = "*"
+statsmodels = "*"
+
+
+# extra dependencies from PyPI
+[pypi-dependencies]
+sfrmaker = "*"
+modflow-setup = "*"
+gis-utils = "*"
