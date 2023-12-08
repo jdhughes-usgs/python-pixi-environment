@@ -27,7 +27,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          iwr -useb https://pixi.sh/install.ps1 | iex
+          winget install prefix-dev.pixi
 
       - name: Install pixi on Linux and MacOS
         if: runner.os != 'Windows'
