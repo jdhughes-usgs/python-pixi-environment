@@ -23,10 +23,24 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup pixi
-        uses: prefix-dev/setup-pixi@v0.4.1
-        with:
-          pixi-version: v0.9.1
-          cache: true
-          auth-host: prefix.dev
-          auth-token: ${{ secrets.PREFIX_DEV_TOKEN }}
+      - name: Install pixi on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          iwr -useb https://pixi.sh/install.ps1 | iex
+
+      - name: Install pixi on Linux and MacOS
+        if: runner.os != 'Windows'
+        run: |
+          curl -fsSL https://pixi.sh/install.sh | bash
+
+      - name: Install pixi class environment on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          pixi run install
+
+      - name: Install pixi class environment on Linux and MacOS
+        if: runner.os != 'Windows'
+        run: |
+          pixi run install
