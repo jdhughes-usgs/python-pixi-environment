@@ -42,6 +42,8 @@ jobs:
         shell: pwsh
         run: |
           pixi run install
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install pixi on Linux and MacOS
         if: runner.os != 'Windows'
@@ -52,3 +54,5 @@ jobs:
         if: runner.os != 'Windows'
         run: |
           pixi run install
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
