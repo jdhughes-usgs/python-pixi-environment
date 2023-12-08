@@ -1,4 +1,7 @@
 # python-pixi-environment
+
+[![pixi environment continuous integration](https://github.com/jdhughes-usgs/python-pixi-environment/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jdhughes-usgs/python-pixi-environment/actions/workflows/ci.yml)
+
 This repository includes a test pixi environment for the gw1774 class being held in Albuquerque, New Mexico in late January 2024. Instructions for installing pixi and the class environment are given below.
 
 ## Clone this repository
